@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        img {
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .mybtn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mybtn:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Slider</h1>
+    <div class="button-container">
+        <button class="mybtn" onclick="prev();">Previous</button>
+        <img src="img/1.jpg" alt="" height="400" width="800">
+        <button class="mybtn" onclick="next();">Next</button>
+    </div>
+
+    <script>
+        let pic = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"];
+        let picsrc = document.querySelector("img");
+        let count = 0;
+    
+        function next() {
+          count++;
+          if (count >= pic.length) {
+            count = 0;
+          } else {
+            picsrc.src = pic[count];
+          }
+        }
+    
+        function prev() {
+          count--;
+          if (count < 0) {
+            count = pic.length - 1;
+          } else {
+            picsrc.src = pic[count];
+          }
+        }
+    </script>
+</body>
+</html>
